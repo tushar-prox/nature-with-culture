@@ -647,6 +647,59 @@
     margin: 0;
   }
 
+  /* ── FLOATING SCHOOL CTA ── */
+  .school-float-cta {
+    position: fixed;
+    bottom: max(22px, env(safe-area-inset-bottom, 0px) + 10px);
+    right: max(22px, env(safe-area-inset-right, 0px) + 6px);
+    z-index: 98;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    background: var(--saffron);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 8px 32px rgba(232, 117, 26, 0.42);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
+    max-width: min(320px, calc(100vw - 32px));
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+  .school-float-cta:hover {
+    background: var(--deep-saffron);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(232, 117, 26, 0.5);
+    color: white;
+  }
+  .school-float-cta svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    stroke-width: 2;
+  }
+  .school-float-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: left;
+    min-width: 0;
+  }
+  .school-float-kicker {
+    font-size: 0.68rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.92;
+  }
+  .school-float-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
   /* ── FOOTER ── */
   footer {
     background: var(--deep-navy); color: rgba(255,255,255,0.5);
@@ -679,7 +732,7 @@
     html { scroll-behavior: auto; }
     .reveal { opacity: 1; transform: none; transition: none; }
     .btn-primary:hover, .btn-ghost:hover svg, .pillar-card:hover,
-    .activity-card:hover, .invest-cta-btn:hover { transform: none; }
+    .activity-card:hover, .invest-cta-btn:hover, .school-float-cta:hover { transform: none; }
     .floating-badge.left, .floating-badge.top-right { animation: none; }
   }
 
@@ -696,6 +749,14 @@
     .invest-use-grid { grid-template-columns: 1fr 1fr; }
     .invest-goals { gap: 2rem; }
     .nav-links { display: none; }
+    .school-float-cta {
+      padding: 12px 18px;
+      gap: 10px;
+      max-width: calc(100vw - 24px);
+    }
+    .school-float-cta svg { width: 20px; height: 20px; }
+    .school-float-title { font-size: 0.88rem; }
+    .school-float-kicker { font-size: 0.62rem; }
   }
 </style>
 </head>
@@ -713,6 +774,14 @@
     <li><a href="#invest" class="nav-cta"><i data-lucide="sparkles" aria-hidden="true"></i> Partner with Us</a></li>
   </ul>
 </nav>
+
+<a href="schools.html#request-pilot" class="school-float-cta">
+  <i data-lucide="school" aria-hidden="true"></i>
+  <span class="school-float-text">
+    <span class="school-float-kicker">Schools</span>
+    <span class="school-float-title">Register for the program</span>
+  </span>
+</a>
 
 <!-- HERO -->
 <section class="hero" id="top">
