@@ -32,12 +32,13 @@
   }
 
   /* ── NAV ── */
+  /* No backdrop-filter on nav: it creates a containing block for fixed
+     descendants, which clips the full-screen mobile menu to the header height. */
   nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
+    position: fixed; top: 0; width: 100%; z-index: 200;
     padding: 18px 6%;
     display: flex; align-items: center; justify-content: space-between;
-    background: rgba(253,246,237,0.88);
-    backdrop-filter: blur(12px);
+    background: rgba(253,246,237,0.96);
     border-bottom: 1px solid var(--border);
   }
   .nav-logo {
@@ -63,6 +64,44 @@
   }
   .nav-cta:hover { background: var(--deep-saffron) !important; color: white !important; }
   .nav-cta svg { width: 16px; height: 16px; flex-shrink: 0; stroke-width: 2.25; }
+
+  .nav-top {
+    display: contents;
+  }
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin: -8px -8px -8px 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--deep-navy);
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  .nav-toggle svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2.25;
+  }
+  .nav-toggle-close { display: none; }
+  nav.nav-menu-open .nav-toggle-open { display: none; }
+  nav.nav-menu-open .nav-toggle-close { display: block; }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 
   a:focus-visible, button:focus-visible {
     outline: 2px solid var(--saffron);
@@ -748,7 +787,67 @@
     .roadmap-track::before { display: none; }
     .invest-use-grid { grid-template-columns: 1fr 1fr; }
     .invest-goals { gap: 2rem; }
-    .nav-links { display: none; }
+    nav {
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-top {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+      background: rgba(253,246,237,0.96);
+      gap: 0.75rem;
+    }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      inset: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: max(88px, env(safe-area-inset-top, 0px) + 72px) 8%
+        max(2rem, env(safe-area-inset-bottom, 0px) + 16px);
+      margin: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      list-style: none;
+      background: rgba(253,246,237,0.98);
+      z-index: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      box-shadow: none;
+    }
+    .nav-links li {
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-links a {
+      display: block;
+      padding: 1rem 0;
+      font-size: 1rem;
+    }
+    /* .nav-links a sets padding 1rem 0 — without !important it beats .nav-cta and strips horizontal padding, clipping the pill */
+    .nav-links li:last-child {
+      display: flex;
+      justify-content: center;
+      border-bottom: none;
+    }
+    .nav-links a.nav-cta {
+      margin: 0.5rem 0 1rem;
+      padding: 14px 26px !important;
+      text-align: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: calc(100% - 4px);
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+    nav.nav-menu-open .nav-links {
+      display: flex;
+    }
     .school-float-cta {
       padding: 12px 18px;
       gap: 10px;
@@ -763,12 +862,20 @@
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">Nurture <span>with</span> Culture</div>
-  <ul class="nav-links">
+<nav aria-label="Primary">
+  <div class="nav-top">
+    <div class="nav-logo">Nurture <span>with</span> Culture</div>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" id="nav-toggle-btn">
+      <span class="visually-hidden">Open menu</span>
+      <i data-lucide="menu" class="nav-toggle-open" aria-hidden="true"></i>
+      <i data-lucide="x" class="nav-toggle-close" aria-hidden="true"></i>
+    </button>
+  </div>
+  <ul class="nav-links" id="primary-nav">
     <li><a href="#vision">Vision</a></li>
     <li><a href="#pillars">Pillars</a></li>
     <li><a href="#program">Program</a></li>
+    <li><a href="document.html">Program PDF</a></li>
     <li><a href="schools.html">For Schools</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#invest" class="nav-cta"><i data-lucide="sparkles" aria-hidden="true"></i> Partner with Us</a></li>
@@ -1218,6 +1325,39 @@
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 <script>
   if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+<script>
+  (function () {
+    const nav = document.querySelector('nav[aria-label="Primary"]');
+    const toggle = document.getElementById('nav-toggle-btn');
+    const links = document.getElementById('primary-nav');
+    if (!nav || !toggle || !links) return;
+    const mq = window.matchMedia('(max-width: 900px)');
+    const label = toggle.querySelector('.visually-hidden');
+    function setOpen(open) {
+      nav.classList.toggle('nav-menu-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (label) label.textContent = open ? 'Close menu' : 'Open menu';
+      if (open && mq.matches) {
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+      }
+    }
+    toggle.addEventListener('click', function () {
+      setOpen(!nav.classList.contains('nav-menu-open'));
+    });
+    links.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (mq.matches) setOpen(false);
+      });
+    });
+    mq.addEventListener('change', function (e) {
+      if (!e.matches) setOpen(false);
+    });
+  })();
 </script>
 <script>
   // Scroll reveal

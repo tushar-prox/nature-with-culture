@@ -30,12 +30,13 @@
     overflow-x: hidden;
   }
 
+  /* No backdrop-filter: fixed mobile drawer would clip like index.html */
   nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
+    position: fixed; top: 0; width: 100%; z-index: 200;
     padding: 18px 6%;
     display: flex; align-items: center; justify-content: space-between;
-    background: rgba(253,246,237,0.92);
-    backdrop-filter: blur(12px);
+    gap: 12px;
+    background: rgba(253,246,237,0.96);
     border-bottom: 1px solid var(--border);
   }
   .nav-logo {
@@ -44,9 +45,17 @@
     color: var(--deep-navy);
     letter-spacing: -0.02em;
     text-decoration: none;
+    min-width: 0;
+    flex: 1 1 auto;
   }
   .nav-logo span { color: var(--saffron); }
-  .nav-right { display: flex; align-items: center; gap: 1.25rem; }
+  .nav-cluster {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+  }
   .nav-back {
     font-size: 0.85rem; font-weight: 500; color: var(--text-mid);
     text-decoration: none;
@@ -61,8 +70,59 @@
     font-size: 0.85rem; font-weight: 500; text-decoration: none;
     transition: background 0.2s;
     display: inline-flex; align-items: center; gap: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .nav-cta:hover { background: var(--deep-saffron); }
+  .nav-cta-short,
+  .nav-cta-tiny { display: none; }
+
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin: -8px -10px -8px 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--deep-navy);
+    cursor: pointer;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+  .nav-toggle svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2.25;
+  }
+  .nav-toggle-close { display: none; }
+  nav.nav-menu-open .nav-toggle-open { display: none; }
+  nav.nav-menu-open .nav-toggle-close { display: block; }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .nav-drawer {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  @media (min-width: 901px) {
+    .nav-toggle { display: none !important; }
+    .nav-drawer { display: none !important; }
+  }
 
   a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible {
     outline: 2px solid var(--saffron);
@@ -554,18 +614,127 @@
     .grid-3 { grid-template-columns: 1fr; }
     .benefits-grid, .pain-grid, .snapshot, .form-row.two { grid-template-columns: 1fr; }
     .snapshot-stats { grid-template-columns: 1fr 1fr; }
-    .nav-back { display: none; }
+    nav {
+      flex-wrap: nowrap;
+      align-items: center;
+      padding: 12px 4%;
+      gap: 8px;
+    }
+    .nav-logo {
+      flex: 1 1 auto;
+      min-width: 0;
+      font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+      line-height: 1.2;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .nav-back {
+      display: none;
+    }
+    .nav-cluster {
+      position: relative;
+      z-index: 2;
+      gap: 4px;
+      background: rgba(253,246,237,0.96);
+      flex-shrink: 0;
+    }
+    .nav-toggle {
+      display: flex;
+    }
+    .nav-cta {
+      padding: 9px 12px;
+      font-size: 0.76rem;
+      gap: 5px;
+      max-width: 100%;
+    }
+    .nav-cta-full { display: none; }
+    .nav-cta-short { display: inline; }
+    .nav-cta-tiny { display: none; }
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: max(88px, env(safe-area-inset-top, 0px) + 72px) 8%
+        max(2rem, env(safe-area-inset-bottom, 0px) + 16px);
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: rgba(253,246,237,0.98);
+      z-index: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav-drawer li {
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-drawer li:last-child {
+      border-bottom: none;
+    }
+    .nav-drawer a {
+      display: block;
+      padding: 1rem 0;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-drawer a:hover { color: var(--saffron); }
+    .nav-drawer a.nav-drawer-cta {
+      margin-top: 0.5rem;
+      padding: 14px 22px;
+      text-align: center;
+      border-radius: 50px;
+      background: var(--saffron);
+      color: white !important;
+      border-bottom: none;
+    }
+    .nav-drawer a.nav-drawer-cta:hover {
+      background: var(--deep-saffron);
+      color: white !important;
+    }
+    nav.nav-menu-open .nav-drawer {
+      display: flex;
+    }
+  }
+  @media (max-width: 400px) {
+    .nav-cta-short { display: none !important; }
+    .nav-cta-tiny { display: inline; }
+  }
+  @media (max-width: 340px) {
+    .nav-cta-tiny { display: none !important; }
+    .nav-cta .nav-cta-ic { width: 20px; height: 20px; }
+    .nav-cta {
+      padding: 10px 11px;
+      gap: 0;
+    }
   }
 </style>
 </head>
 <body>
 
-<nav aria-label="Schools page">
+<nav aria-label="Schools page" id="schools-site-nav">
   <a href="index.html" class="nav-logo">Nurture <span>with</span> Culture</a>
-  <div class="nav-right">
-    <a href="index.html" class="nav-back"><i data-lucide="arrow-left" class="nav-ic" aria-hidden="true"></i> Main overview</a>
-    <a href="#request-pilot" class="nav-cta"><i data-lucide="mail" class="nav-cta-ic" aria-hidden="true"></i> Request information</a>
+  <div class="nav-cluster">
+    <a href="index.html" class="nav-back"><i data-lucide="arrow-left" class="nav-ic" aria-hidden="true"></i><span class="nav-back-label"> Main overview</span></a>
+    <a href="#request-pilot" class="nav-cta" aria-label="Request information"><i data-lucide="mail" class="nav-cta-ic" aria-hidden="true"></i><span class="nav-cta-full">Request information</span><span class="nav-cta-short">Request info</span><span class="nav-cta-tiny">Contact</span></a>
+    <button type="button" class="nav-toggle" id="schools-nav-toggle" aria-expanded="false" aria-controls="schools-nav-drawer">
+      <span class="visually-hidden">Open menu</span>
+      <i data-lucide="menu" class="nav-toggle-open" aria-hidden="true"></i>
+      <i data-lucide="x" class="nav-toggle-close" aria-hidden="true"></i>
+    </button>
   </div>
+  <ul class="nav-drawer" id="schools-nav-drawer">
+    <li><a href="index.html">Main program overview</a></li>
+    <li><a href="#pain-points">Pain points</a></li>
+    <li><a href="#why-schools">Why partner</a></li>
+    <li><a href="#implementation">Implementation</a></li>
+    <li><a href="#program-snapshot">Program snapshot</a></li>
+    <li><a href="#request-pilot" class="nav-drawer-cta">Request information</a></li>
+  </ul>
 </nav>
 
 <section class="hero">
@@ -860,6 +1029,39 @@
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 <script>
   if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+<script>
+  (function () {
+    const nav = document.getElementById('schools-site-nav');
+    const toggle = document.getElementById('schools-nav-toggle');
+    const drawer = document.getElementById('schools-nav-drawer');
+    if (!nav || !toggle || !drawer) return;
+    const mq = window.matchMedia('(max-width: 900px)');
+    const label = toggle.querySelector('.visually-hidden');
+    function setOpen(open) {
+      nav.classList.toggle('nav-menu-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (label) label.textContent = open ? 'Close menu' : 'Open menu';
+      if (open && mq.matches) {
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+      }
+    }
+    toggle.addEventListener('click', function () {
+      setOpen(!nav.classList.contains('nav-menu-open'));
+    });
+    drawer.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (mq.matches) setOpen(false);
+      });
+    });
+    mq.addEventListener('change', function (e) {
+      if (!e.matches) setOpen(false);
+    });
+  })();
 </script>
 <script>
   const reveals = document.querySelectorAll('.reveal');
