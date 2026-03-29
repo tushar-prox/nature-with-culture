@@ -59,8 +59,15 @@
     padding: 9px 22px; border-radius: 50px;
     font-weight: 500 !important;
     transition: background 0.2s !important;
+    display: inline-flex !important; align-items: center; gap: 8px;
   }
   .nav-cta:hover { background: var(--deep-saffron) !important; color: white !important; }
+  .nav-cta svg { width: 16px; height: 16px; flex-shrink: 0; stroke-width: 2.25; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--saffron);
+    outline-offset: 2px;
+  }
 
   /* ── HERO ── */
   .hero {
@@ -136,14 +143,16 @@
     box-shadow: 0 4px 24px rgba(232,117,26,0.35);
   }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(232,117,26,0.45); }
+  .btn-primary svg, .invest-cta-btn svg { width: 18px; height: 18px; flex-shrink: 0; stroke-width: 2.25; }
+  .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
   .btn-ghost {
     color: var(--text-mid); font-size: 0.95rem; font-weight: 500;
     text-decoration: none; display: flex; align-items: center; gap: 8px;
     transition: color 0.2s;
   }
   .btn-ghost:hover { color: var(--saffron); }
-  .btn-ghost::after { content: '→'; transition: transform 0.2s; }
-  .btn-ghost:hover::after { transform: translateX(4px); }
+  .btn-ghost svg { width: 18px; height: 18px; flex-shrink: 0; stroke-width: 2.25; transition: transform 0.2s; }
+  .btn-ghost:hover svg { transform: translateX(4px); }
 
   /* Hero stats strip */
   .hero-stats {
@@ -241,7 +250,8 @@
     transition: background 0.2s;
   }
   .pillar-chip:hover { background: rgba(232,117,26,0.08); }
-  .pillar-icon { font-size: 1.2rem; }
+  .pillar-icon { display: inline-flex; align-items: center; color: var(--saffron); }
+  .pillar-icon svg { width: 20px; height: 20px; stroke-width: 2; }
   .pillar-name { font-size: 0.8rem; font-weight: 500; color: var(--text-dark); }
 
   .floating-badge {
@@ -262,7 +272,8 @@
     background: var(--gold); color: var(--text-dark);
     animation: float 3s ease-in-out infinite 1.5s;
   }
-  .fb-icon { font-size: 1.3rem; }
+  .fb-icon { display: flex; align-items: center; justify-content: center; }
+  .fb-icon svg { width: 26px; height: 26px; stroke-width: 2; }
   .fb-text { line-height: 1.3; }
   .fb-num { font-weight: 700; font-size: 1.1rem; }
   .fb-sub { font-size: 0.7rem; opacity: 0.75; }
@@ -270,10 +281,15 @@
   /* ── SECTION SHARED ── */
   section { padding: 100px 6%; }
   .section-label {
-    display: inline-block;
+    display: inline-flex; align-items: center; gap: 10px;
     font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
     text-transform: uppercase; color: var(--saffron);
     margin-bottom: 1rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 28px; height: 2px; border-radius: 2px;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
   }
   .section-title {
     font-family: 'Playfair Display', serif;
@@ -363,7 +379,8 @@
     object-fit: cover;
     display: block;
   }
-  .pc-emoji { font-size: 2rem; margin-bottom: 1.2rem; display: block; }
+  .pc-emoji { margin-bottom: 1.2rem; display: flex; color: var(--saffron); }
+  .pc-emoji svg { width: 32px; height: 32px; stroke-width: 2; }
   .pc-name {
     font-family: 'Playfair Display', serif;
     font-size: 1.15rem; font-weight: 600; color: var(--deep-navy);
@@ -461,8 +478,11 @@
   .activity-icon {
     width: 48px; height: 48px; border-radius: 14px;
     background: var(--cream); display: flex; align-items: center;
-    justify-content: center; font-size: 1.4rem; flex-shrink: 0;
+    justify-content: center; flex-shrink: 0;
+    color: var(--deep-saffron);
+    border: 1px solid var(--border);
   }
+  .activity-icon svg { width: 24px; height: 24px; stroke-width: 2; }
   .activity-title { font-weight: 600; color: var(--deep-navy); margin-bottom: 0.4rem; }
   .activity-desc { font-size: 0.85rem; line-height: 1.65; color: var(--text-mid); }
   .culture-gallery {
@@ -577,7 +597,8 @@
     transition: background 0.3s;
   }
   .use-card:hover { background: rgba(255,255,255,0.1); }
-  .use-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .use-icon { margin-bottom: 1rem; display: flex; justify-content: center; color: var(--gold); }
+  .use-icon svg { width: 28px; height: 28px; stroke-width: 2; }
   .use-name { font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; }
   .use-desc { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
 
@@ -592,7 +613,10 @@
   .goal-label { font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
 
   .invest-cta-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     background: var(--saffron); color: white;
     padding: 16px 48px; border-radius: 50px;
     font-size: 1rem; font-weight: 500;
@@ -605,12 +629,22 @@
   /* ── QUOTE STRIP ── */
   .quote-strip {
     background: var(--saffron); padding: 60px 6%; text-align: center;
+    position: relative; overflow: hidden;
   }
+  .quote-strip::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .quote-strip-inner { position: relative; max-width: 760px; margin: 0 auto; }
+  .quote-strip-ic { display: flex; justify-content: center; margin-bottom: 1rem; color: rgba(255,255,255,0.5); }
+  .quote-strip-ic svg { width: 36px; height: 36px; stroke-width: 1.75; }
   .quote-text {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.4rem, 2.5vw, 2rem);
     color: white; font-style: italic; line-height: 1.5;
-    max-width: 760px; margin: 0 auto;
+    margin: 0;
   }
 
   /* ── FOOTER ── */
@@ -641,6 +675,14 @@
   }
   .reveal.visible { opacity: 1; transform: none; }
 
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .btn-primary:hover, .btn-ghost:hover svg, .pillar-card:hover,
+    .activity-card:hover, .invest-cta-btn:hover { transform: none; }
+    .floating-badge.left, .floating-badge.top-right { animation: none; }
+  }
+
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; padding-top: 100px; }
     .hero-visual { display: none; }
@@ -668,7 +710,7 @@
     <li><a href="#program">Program</a></li>
     <li><a href="schools.html">For Schools</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#invest" class="nav-cta">Partner with Us</a></li>
+    <li><a href="#invest" class="nav-cta"><i data-lucide="sparkles" aria-hidden="true"></i> Partner with Us</a></li>
   </ul>
 </nav>
 
@@ -683,8 +725,8 @@
       A year-long school enrichment program that reconnects Indian students with their heritage, builds strong values, and cultivates confident, curious, responsible citizens.
     </p>
     <div class="hero-actions">
-      <a href="#invest" class="btn-primary">Partner with Us</a>
-      <a href="#program" class="btn-ghost">See the Program</a>
+      <a href="#invest" class="btn-primary"><i data-lucide="handshake" aria-hidden="true"></i> Partner with Us</a>
+      <a href="#program" class="btn-ghost">See the Program <i data-lucide="arrow-right" aria-hidden="true"></i></a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
@@ -707,7 +749,7 @@
 
   <div class="hero-visual">
     <div class="floating-badge top-right">
-      <span class="fb-icon">🏛️</span>
+      <span class="fb-icon" aria-hidden="true"><i data-lucide="layout-grid"></i></span>
       <div class="fb-text">
         <div class="fb-num">6 Pillars</div>
         <div class="fb-sub">of Development</div>
@@ -727,16 +769,16 @@
         <span class="card-tag">2025–26 Curriculum</span>
       </div>
       <div class="pillars-grid">
-        <div class="pillar-chip"><span class="pillar-icon">🏛️</span><span class="pillar-name">Culture & Heritage</span></div>
-        <div class="pillar-chip"><span class="pillar-icon">📚</span><span class="pillar-name">Reading Habits</span></div>
-        <div class="pillar-chip"><span class="pillar-icon">🧭</span><span class="pillar-name">Knowledge & Curiosity</span></div>
-        <div class="pillar-chip"><span class="pillar-icon">🛡️</span><span class="pillar-name">Character & Values</span></div>
-        <div class="pillar-chip"><span class="pillar-icon">🌟</span><span class="pillar-name">Confidence & Speaking</span></div>
-        <div class="pillar-chip"><span class="pillar-icon">🤝</span><span class="pillar-name">Leadership</span></div>
+        <div class="pillar-chip"><span class="pillar-icon" aria-hidden="true"><i data-lucide="landmark"></i></span><span class="pillar-name">Culture & Heritage</span></div>
+        <div class="pillar-chip"><span class="pillar-icon" aria-hidden="true"><i data-lucide="book-open"></i></span><span class="pillar-name">Reading Habits</span></div>
+        <div class="pillar-chip"><span class="pillar-icon" aria-hidden="true"><i data-lucide="compass"></i></span><span class="pillar-name">Knowledge & Curiosity</span></div>
+        <div class="pillar-chip"><span class="pillar-icon" aria-hidden="true"><i data-lucide="shield"></i></span><span class="pillar-name">Character & Values</span></div>
+        <div class="pillar-chip"><span class="pillar-icon" aria-hidden="true"><i data-lucide="sparkles"></i></span><span class="pillar-name">Confidence & Speaking</span></div>
+        <div class="pillar-chip"><span class="pillar-icon" aria-hidden="true"><i data-lucide="handshake"></i></span><span class="pillar-name">Leadership</span></div>
       </div>
     </div>
     <div class="floating-badge left">
-      <span class="fb-icon">🎓</span>
+      <span class="fb-icon" aria-hidden="true"><i data-lucide="graduation-cap"></i></span>
       <div class="fb-text">
         <div class="fb-num">40 Sessions</div>
         <div class="fb-sub">per academic year</div>
@@ -792,7 +834,7 @@
       <div class="pillar-card-media">
         <img src="https://images.unsplash.com/photo-1666694072112-fa46b14a5d65?auto=format&amp;fit=crop&amp;w=800&amp;q=80" width="800" height="450" alt="Traditional Indian festival sculpture and decor" loading="lazy" decoding="async">
       </div>
-      <span class="pc-emoji">🏛️</span>
+      <span class="pc-emoji" aria-hidden="true"><i data-lucide="landmark"></i></span>
       <div class="pc-name">Culture & Heritage</div>
       <div class="pc-desc">Connecting students with India's rich traditions, festivals, and the inspiring leaders who built the nation.</div>
     </div>
@@ -800,7 +842,7 @@
       <div class="pillar-card-media">
         <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&amp;fit=crop&amp;w=800&amp;q=80" width="800" height="450" alt="Open books — reading and learning" loading="lazy" decoding="async">
       </div>
-      <span class="pc-emoji">📚</span>
+      <span class="pc-emoji" aria-hidden="true"><i data-lucide="book-open"></i></span>
       <div class="pc-name">Reading Habit Development</div>
       <div class="pc-desc">Building lifelong learners through curated stories, knowledge, and structured reading challenges.</div>
     </div>
@@ -808,7 +850,7 @@
       <div class="pillar-card-media">
         <img src="https://images.unsplash.com/photo-1719159381916-062fa9f435a6?auto=format&amp;fit=crop&amp;w=800&amp;q=80" width="800" height="450" alt="Indian classroom with students at desks" loading="lazy" decoding="async">
       </div>
-      <span class="pc-emoji">🧭</span>
+      <span class="pc-emoji" aria-hidden="true"><i data-lucide="compass"></i></span>
       <div class="pc-name">Knowledge & Curiosity</div>
       <div class="pc-desc">Expanding general awareness and critical thinking skills that serve children across every subject.</div>
     </div>
@@ -816,7 +858,7 @@
       <div class="pillar-card-media">
         <img src="https://images.unsplash.com/photo-1702247413045-aa486c6b0164?auto=format&amp;fit=crop&amp;w=800&amp;q=80" width="800" height="450" alt="Lit diyas — Indian festival light and tradition" loading="lazy" decoding="async">
       </div>
-      <span class="pc-emoji">🛡️</span>
+      <span class="pc-emoji" aria-hidden="true"><i data-lucide="shield"></i></span>
       <div class="pc-name">Character & Values</div>
       <div class="pc-desc">Instilling strong moral foundations, responsible citizenship, and a sense of ethical duty.</div>
     </div>
@@ -824,7 +866,7 @@
       <div class="pillar-card-media">
         <img src="https://images.unsplash.com/photo-1692269726203-fa0d613eec37?auto=format&amp;fit=crop&amp;w=800&amp;q=80" width="800" height="450" alt="Smiling schoolchildren in India" loading="lazy" decoding="async">
       </div>
-      <span class="pc-emoji">🌟</span>
+      <span class="pc-emoji" aria-hidden="true"><i data-lucide="sparkles"></i></span>
       <div class="pc-name">Confidence & Communication</div>
       <div class="pc-desc">Developing public speaking, articulation, and the confidence to express ideas with clarity and purpose.</div>
     </div>
@@ -832,7 +874,7 @@
       <div class="pillar-card-media">
         <img src="https://images.unsplash.com/photo-1667578823129-b7a8b7ed97c2?auto=format&amp;fit=crop&amp;w=800&amp;q=80" width="800" height="450" alt="Hands holding roses — Indian festive tradition" loading="lazy" decoding="async">
       </div>
-      <span class="pc-emoji">🤝</span>
+      <span class="pc-emoji" aria-hidden="true"><i data-lucide="handshake"></i></span>
       <div class="pc-name">Leadership & Responsibility</div>
       <div class="pc-desc">Empowering students to take initiative, serve their communities, and lead with integrity.</div>
     </div>
@@ -923,42 +965,42 @@
   </div>
   <div class="activities-grid reveal">
     <div class="activity-card">
-      <div class="activity-icon">🏆</div>
+      <div class="activity-icon" aria-hidden="true"><i data-lucide="trophy"></i></div>
       <div>
         <div class="activity-title">Culture Quiz Championship</div>
         <div class="activity-desc">Inter-class and inter-school competitions on Indian history, traditions, and inspiring leaders — making cultural knowledge exciting and competitive.</div>
       </div>
     </div>
     <div class="activity-card">
-      <div class="activity-icon">🎤</div>
+      <div class="activity-icon" aria-hidden="true"><i data-lucide="mic"></i></div>
       <div>
         <div class="activity-title">Storytelling Competitions</div>
         <div class="activity-desc">Students research and narrate stories of Indian heroes and cultural moments, building speaking skills and cultural pride simultaneously.</div>
       </div>
     </div>
     <div class="activity-card">
-      <div class="activity-icon">📖</div>
+      <div class="activity-icon" aria-hidden="true"><i data-lucide="book-marked"></i></div>
       <div>
         <div class="activity-title">Reading Challenges</div>
         <div class="activity-desc">Monthly curated reading lists with reflection activities — building the habit of deep, meaningful reading from an early age.</div>
       </div>
     </div>
     <div class="activity-card">
-      <div class="activity-icon">🎙️</div>
+      <div class="activity-icon" aria-hidden="true"><i data-lucide="mic-2"></i></div>
       <div>
         <div class="activity-title">Young Leaders Speech Day</div>
         <div class="activity-desc">An annual platform where students deliver speeches on values, leadership, and community — culminating in real public speaking experience.</div>
       </div>
     </div>
     <div class="activity-card">
-      <div class="activity-icon">🪔</div>
+      <div class="activity-icon" aria-hidden="true"><i data-lucide="flame"></i></div>
       <div>
         <div class="activity-title">Festival Knowledge Projects</div>
         <div class="activity-desc">Deep-dives into the history and significance of Indian festivals, connecting celebration to cultural understanding and heritage.</div>
       </div>
     </div>
     <div class="activity-card">
-      <div class="activity-icon">🌱</div>
+      <div class="activity-icon" aria-hidden="true"><i data-lucide="sprout"></i></div>
       <div>
         <div class="activity-title">Community Service Programs</div>
         <div class="activity-desc">Structured civic engagement projects that put values into action — developing empathy, responsibility, and a spirit of service.</div>
@@ -1057,22 +1099,22 @@
   </div>
   <div class="invest-use-grid reveal">
     <div class="use-card">
-      <div class="use-icon">📝</div>
+      <div class="use-icon" aria-hidden="true"><i data-lucide="pen-line"></i></div>
       <div class="use-name">Curriculum Development</div>
       <div class="use-desc">Expand content library and build assessment tools</div>
     </div>
     <div class="use-card">
-      <div class="use-icon">🏫</div>
+      <div class="use-icon" aria-hidden="true"><i data-lucide="school"></i></div>
       <div class="use-name">School Partnerships</div>
       <div class="use-desc">Build relationships with 100+ partner schools</div>
     </div>
     <div class="use-card">
-      <div class="use-icon">💻</div>
+      <div class="use-icon" aria-hidden="true"><i data-lucide="laptop"></i></div>
       <div class="use-name">Technology Platform</div>
       <div class="use-desc">Develop digital infrastructure for national scale</div>
     </div>
     <div class="use-card">
-      <div class="use-icon">📣</div>
+      <div class="use-icon" aria-hidden="true"><i data-lucide="megaphone"></i></div>
       <div class="use-name">Brand Building</div>
       <div class="use-desc">Establish market presence and institutional trust</div>
     </div>
@@ -1087,20 +1129,27 @@
       <div class="goal-label">Students Impacted Annually</div>
     </div>
   </div>
-  <a href="mailto:hello@nurtурewithculture.in" class="invest-cta-btn reveal">Connect with Us →</a>
+  <a href="mailto:hello@nurturewithculture.in" class="invest-cta-btn reveal"><i data-lucide="mail" aria-hidden="true"></i> Connect with Us <i data-lucide="arrow-right" aria-hidden="true"></i></a>
 </section>
 
 <!-- QUOTE -->
 <div class="quote-strip">
-  <p class="quote-text">"Education builds careers. Culture builds character. Nurture with Culture builds responsible citizens."</p>
+  <div class="quote-strip-inner">
+    <div class="quote-strip-ic" aria-hidden="true"><i data-lucide="quote"></i></div>
+    <p class="quote-text">"Education builds careers. Culture builds character. Nurture with Culture builds responsible citizens."</p>
+  </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <p><strong>Nurture with Culture</strong> — Holistic Child Development Program Rooted in Indian Values</p>
-  <p style="margin-top:8px">© 2025 Nurture with Culture. All rights reserved.</p>
+  <p style="margin-top:8px">© 2026 Nurture with Culture. All rights reserved.</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
 <script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
