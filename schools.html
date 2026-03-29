@@ -225,6 +225,50 @@
   }
 
   .cream { background: var(--cream); }
+  .pain-section {
+    background: var(--warm-white);
+    border-top: 1px solid var(--border);
+  }
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+  .pain-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem 1.6rem;
+  }
+  .pain-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--deep-navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.35;
+  }
+  .pain-problem {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--text-mid);
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .pain-solve-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.4rem;
+  }
+  .pain-solve {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--text-dark);
+  }
   .benefits-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -411,7 +455,7 @@
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; padding-top: 100px; min-height: auto; }
     .grid-3 { grid-template-columns: 1fr; }
-    .benefits-grid, .snapshot, .form-row.two { grid-template-columns: 1fr; }
+    .benefits-grid, .pain-grid, .snapshot, .form-row.two { grid-template-columns: 1fr; }
     .snapshot-stats { grid-template-columns: 1fr 1fr; }
     .nav-back { display: none; }
   }
@@ -450,6 +494,52 @@
     <div class="hero-photo">
       <img src="https://images.unsplash.com/photo-1719159381916-062fa9f435a6?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" width="1200" height="750" alt="Students in an Indian school classroom" decoding="async" loading="lazy">
     </div>
+  </div>
+</section>
+
+<section class="pain-section" id="pain-points">
+  <div class="reveal">
+    <div class="section-label">Pain points</div>
+    <h2 class="section-title">What schools are up against — and what this program fixes</h2>
+    <p class="section-body">Leadership is accountable for character, culture, and literacy outcomes, but rarely gets a ready-made system that fits the timetable. Below is where that gap shows up, and how Nurture with Culture closes it.</p>
+  </div>
+  <div class="pain-grid reveal">
+    <article class="pain-card">
+      <h3>Holistic goals without a dedicated program</h3>
+      <p class="pain-problem">CBSE, parents, and your own vision ask for values, citizenship, and cultural awareness — yet there is often no single, year-long thread; responsibility gets scattered across assemblies and ad-hoc activities.</p>
+      <p class="pain-solve-label">What it solves</p>
+      <p class="pain-solve">One structured, curriculum-aligned enrichment track across <strong>40 sessions</strong> and six pillars, so holistic development is planned, not improvised.</p>
+    </article>
+    <article class="pain-card">
+      <h3>No time left on the calendar</h3>
+      <p class="pain-problem">Core subjects, exams, and co-curricular blocks already compete for periods; adding “value education” can feel like stealing from academics or burning out teachers.</p>
+      <p class="pain-solve-label">What it solves</p>
+      <p class="pain-solve">Delivery fits a fixed <strong>30-minute weekly</strong> slot with trained facilitators — minimal lift for staff and predictable for your timetable team.</p>
+    </article>
+    <article class="pain-card">
+      <h3>Reading and articulation slip through the cracks</h3>
+      <p class="pain-problem">Reading for pleasure, speaking confidence, and general knowledge are hard to scale class-by-class without shared challenges, events, and follow-through.</p>
+      <p class="pain-solve-label">What it solves</p>
+      <p class="pain-solve">Built-in reading challenges, storytelling and speech opportunities, and quizzes turn literacy and expression into a <strong>whole-school rhythm</strong>, not optional homework.</p>
+    </article>
+    <article class="pain-card">
+      <h3>Inconsistent experience across grades or campuses</h3>
+      <p class="pain-problem">When different teachers run different themes, quality and messaging vary; scaling to more sections or another branch makes that unevenness obvious.</p>
+      <p class="pain-solve-label">What it solves</p>
+      <p class="pain-solve">Standardized content, delivery model, and competitions so participation and outcomes stay <strong>repeatable and inspectable</strong> as you grow.</p>
+    </article>
+    <article class="pain-card">
+      <h3>Hard to show parents and the board “what happened”</h3>
+      <p class="pain-problem">Stakeholders want evidence of holistic work beyond photos from one event; without tracking, it is difficult to report progress or justify renewal.</p>
+      <p class="pain-solve-label">What it solves</p>
+      <p class="pain-solve">Progress framed around the six pillars with summaries you can use in <strong>leadership reviews, inspections, and parent communication</strong>.</p>
+    </article>
+    <article class="pain-card">
+      <h3>Partners want depth, not one-off events</h3>
+      <p class="pain-problem">Festivals and guest lectures matter, but they rarely build habits; families increasingly expect sustained engagement with culture, values, and leadership.</p>
+      <p class="pain-solve-label">What it solves</p>
+      <p class="pain-solve">A full-year partnership — weekly sessions plus signature events (quiz, reading, leadership day) — so the school’s story is <strong>ongoing and credible</strong>.</p>
+    </article>
   </div>
 </section>
 
