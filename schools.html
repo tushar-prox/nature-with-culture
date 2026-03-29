@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="assets/logo-3.png" type="image/png">
 <title>For Schools — Nurture with Culture | Holistic Enrichment Program</title>
 <meta name="description" content="A year-long, curriculum-aligned enrichment program for Indian schools: culture, values, reading, and leadership — 30 minutes per week, trained facilitators, measurable outcomes.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -32,23 +33,44 @@
 
   /* No backdrop-filter: fixed mobile drawer would clip like index.html */
   nav {
-    position: fixed; top: 0; width: 100%; z-index: 200;
+    position: fixed; top: 0; left: 0; right: 0;
+    width: 100%;
+    max-width: 100vw;
+    z-index: 200;
     padding: 18px 6%;
     display: flex; align-items: center; justify-content: space-between;
     gap: 12px;
     background: rgba(253,246,237,0.96);
     border-bottom: 1px solid var(--border);
+    box-sizing: border-box;
   }
   .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25rem; font-weight: 700;
-    color: var(--deep-navy);
-    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.2;
     text-decoration: none;
     min-width: 0;
     flex: 1 1 auto;
+    color: inherit;
   }
-  .nav-logo span { color: var(--saffron); }
+  .nav-logo-mark {
+    width: 44px;
+    height: 44px;
+    aspect-ratio: 1 / 1;
+    display: block;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--deep-navy);
+    letter-spacing: -0.02em;
+    min-width: 0;
+  }
+  .nav-logo-text span { color: var(--saffron); }
   .nav-cluster {
     display: flex;
     align-items: center;
@@ -278,6 +300,355 @@
   .band-dark .section-label { color: var(--gold); }
   .band-dark .section-title { color: white; }
   .band-dark .section-body { color: rgba(255,255,255,0.65); }
+  .fg-band .section-body { color: rgba(255,255,255,0.78); }
+
+  #free-guide.hero {
+    min-height: auto;
+    padding: 108px 6% 56px;
+    scroll-margin-top: 88px;
+  }
+  #free-guide .fg-main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.15rem, 4vw, 3.25rem);
+    line-height: 1.12;
+    color: var(--deep-navy);
+    letter-spacing: -0.03em;
+    margin-bottom: 1.1rem;
+  }
+  #free-guide .fg-main-title em { font-style: italic; color: var(--saffron); }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 1rem 1.5rem;
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-meta strong { color: var(--deep-navy); font-weight: 600; }
+  .hero-card {
+    background: white;
+    border-radius: 22px;
+    padding: 1.75rem 1.75rem 1.5rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 24px 60px rgba(15,31,61,0.1);
+    position: relative; z-index: 1;
+  }
+  .hero-card-titles {
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+  }
+  .hero-card-titles li {
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: var(--text-mid);
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--border);
+    padding-left: 0.85rem;
+    border-left: 3px solid rgba(232, 117, 26, 0.2);
+  }
+  .hero-card-titles li:first-child {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.08rem;
+    line-height: 1.35;
+    color: var(--deep-navy);
+    font-weight: 600;
+    padding-top: 0;
+  }
+  .hero-card-titles li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .hero-card-meta {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    line-height: 1.5;
+    margin-top: 0.25rem;
+  }
+  .insight-list {
+    margin-top: 1.5rem;
+    list-style: none;
+  }
+  .insight-list li {
+    display: flex; gap: 12px; align-items: flex-start;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--text-mid);
+    margin-bottom: 0.85rem;
+  }
+  .insight-list li::before {
+    content: '→';
+    color: var(--saffron);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .pull-quote {
+    margin-top: 1.75rem;
+    padding: 1.25rem 1.35rem;
+    border-left: 4px solid var(--saffron);
+    background: var(--cream);
+    border-radius: 0 12px 12px 0;
+    font-size: 1.02rem;
+    font-style: italic;
+    color: var(--deep-navy);
+    line-height: 1.55;
+  }
+  .fg-band .insight-list li { color: rgba(255, 255, 255, 0.88); }
+  .fg-band .insight-list li::before { color: var(--gold); }
+  .fg-band .pull-quote {
+    background: rgba(255,255,255,0.06);
+    border-left-color: var(--gold);
+    color: rgba(255,255,255,0.92);
+  }
+  .bullet-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 1.5rem;
+    margin-top: 2rem;
+    max-width: 720px;
+  }
+  .bullet-grid li {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text-mid);
+    padding-left: 1.35rem;
+    position: relative;
+  }
+  .bullet-grid li::before {
+    content: '';
+    position: absolute; left: 0; top: 0.55rem;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--saffron);
+  }
+  .gaps-visual {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+  .gap-cell {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.35rem 1rem;
+    text-align: center;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .gap-cell::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .gap-cell:hover {
+    border-color: rgba(232,117,26,0.35);
+    box-shadow: 0 12px 36px rgba(15,31,61,0.08);
+    transform: translateY(-3px);
+  }
+  .gap-cell:hover::after { transform: scaleX(1); }
+  .gap-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(232,117,26,0.35);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .gap-ic {
+    display: flex; justify-content: center;
+    margin-bottom: 0.75rem;
+    color: var(--saffron);
+  }
+  .gap-ic svg { width: 26px; height: 26px; stroke-width: 2; }
+  .gap-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--deep-navy);
+    line-height: 1.35;
+  }
+  .card-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+  .mini-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: background 0.25s;
+  }
+  .mini-card:hover { background: rgba(255,255,255,0.09); }
+  .mini-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.45rem;
+  }
+  .mini-card p {
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.55);
+  }
+  .mini-card .mc-ic {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: rgba(245,200,66,0.12);
+    border: 1px solid rgba(245,200,66,0.22);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 0.85rem;
+    color: var(--gold);
+  }
+  .mini-card .mc-ic svg { width: 20px; height: 20px; stroke-width: 2; }
+  .outcomes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+    max-width: 560px;
+  }
+  .outcome {
+    display: flex; align-items: center; gap: 12px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1rem 1.15rem;
+    font-size: 0.92rem;
+    color: var(--text-dark);
+  }
+  .outcome span:first-child {
+    font-size: 1.25rem;
+    color: var(--sage);
+    font-weight: 700;
+  }
+  .pillars-visual {
+    margin-top: 2.25rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+  }
+  .pillar-tile {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.15rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .pillar-tile:hover {
+    background: rgba(232,117,26,0.08);
+    border-color: rgba(232,117,26,0.28);
+  }
+  .pillar-tile .pt-ic { color: var(--saffron); flex-shrink: 0; }
+  .pillar-tile .pt-ic svg { width: 22px; height: 22px; stroke-width: 2; }
+  .pillar-tile span:last-child {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--deep-navy);
+    line-height: 1.3;
+  }
+  .objection-box {
+    margin-top: 2rem;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 640px;
+    box-shadow: 0 12px 40px rgba(15,31,61,0.06);
+  }
+  .objection-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: var(--deep-navy);
+    margin-bottom: 0.75rem;
+  }
+  .objection-answer {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--saffron);
+    margin-bottom: 1rem;
+  }
+  .format-chips {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  .chip {
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 30px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    color: var(--text-dark);
+  }
+  .cta-section {
+    background: linear-gradient(165deg, var(--deep-navy) 0%, #152a4a 100%);
+    color: white;
+    text-align: center;
+    padding: 96px 6% 88px;
+  }
+  .cta-section .section-label { justify-content: center; color: var(--gold); }
+  .cta-section .section-label::before { display: none; }
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.85rem, 3.2vw, 2.6rem);
+    color: white;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+  .cta-section .lead {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.65;
+  }
+  .cta-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    max-width: 920px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .cta-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 18px;
+    padding: 1.75rem 1.5rem;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .cta-card:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(245,200,66,0.35);
+  }
+  .cta-card p {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 1.1rem;
+    line-height: 1.45;
+  }
+  .cta-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold);
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245,200,66,0.4);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .cta-card a:hover { color: white; border-bottom-color: white; }
+  .cta-card a svg { width: 16px; height: 16px; stroke-width: 2.25; flex-shrink: 0; }
 
   .grid-3 {
     display: grid;
@@ -595,6 +966,38 @@
   footer strong { color: white; }
   footer a { color: var(--gold); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
+  .demo-disclaimer {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    max-width: 38rem;
+    margin: 1.25rem auto 0;
+    padding: 14px 16px;
+    text-align: left;
+    background: rgba(245, 200, 66, 0.14);
+    border: 1px solid rgba(245, 200, 66, 0.35);
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+  .demo-disclaimer-ic {
+    flex-shrink: 0;
+    color: var(--gold);
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .demo-disclaimer-ic svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2.25;
+  }
+  .demo-disclaimer-text {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.88);
+  }
 
   .reveal {
     opacity: 0; transform: translateY(22px);
@@ -607,9 +1010,19 @@
     .reveal { opacity: 1; transform: none; transition: none; }
     .btn-primary:hover, .btn-ghost:hover .btn-ghost-ic,
     .pain-card:hover, .benefit:hover, .snap:hover { transform: none; }
+    .gap-cell:hover { transform: none; }
+  }
+
+  @media (max-width: 1100px) {
+    .gaps-visual { grid-template-columns: repeat(3, 1fr); }
   }
 
   @media (max-width: 900px) {
+    .bullet-grid { grid-template-columns: 1fr; }
+    .gaps-visual { grid-template-columns: 1fr 1fr; }
+    .card-row { grid-template-columns: 1fr; }
+    .pillars-visual { grid-template-columns: 1fr 1fr; }
+    .cta-options { grid-template-columns: 1fr; }
     .hero { grid-template-columns: 1fr; padding-top: 100px; min-height: auto; }
     .grid-3 { grid-template-columns: 1fr; }
     .benefits-grid, .pain-grid, .snapshot, .form-row.two { grid-template-columns: 1fr; }
@@ -623,11 +1036,14 @@
     .nav-logo {
       flex: 1 1 auto;
       min-width: 0;
-      font-size: clamp(0.9rem, 3.5vw, 1.1rem);
-      line-height: 1.2;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      max-width: calc(100vw - 64px);
+    }
+    .nav-logo-mark {
+      width: 34px;
+      height: 34px;
+    }
+    .nav-logo-text {
+      font-size: clamp(0.85rem, 3.5vw, 1.05rem);
     }
     .nav-back {
       display: none;
@@ -642,14 +1058,11 @@
     .nav-toggle {
       display: flex;
     }
-    .nav-cta {
-      padding: 9px 12px;
-      font-size: 0.76rem;
-      gap: 5px;
-      max-width: 100%;
+    .nav-cluster > a.nav-cta {
+      display: none;
     }
     .nav-cta-full { display: none; }
-    .nav-cta-short { display: inline; }
+    .nav-cta-short { display: none; }
     .nav-cta-tiny { display: none; }
     .nav-drawer {
       display: none;
@@ -700,24 +1113,20 @@
       display: flex;
     }
   }
-  @media (max-width: 400px) {
-    .nav-cta-short { display: none !important; }
-    .nav-cta-tiny { display: inline; }
-  }
-  @media (max-width: 340px) {
-    .nav-cta-tiny { display: none !important; }
-    .nav-cta .nav-cta-ic { width: 20px; height: 20px; }
-    .nav-cta {
-      padding: 10px 11px;
-      gap: 0;
-    }
+  @media (max-width: 520px) {
+    .gaps-visual { grid-template-columns: 1fr; }
+    .pillars-visual { grid-template-columns: 1fr; }
+    .outcomes { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
 <nav aria-label="Schools page" id="schools-site-nav">
-  <a href="index.html" class="nav-logo">Nurture <span>with</span> Culture</a>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo-3.png" alt="" class="nav-logo-mark" width="96" height="96" decoding="async">
+    <span class="nav-logo-text">Nurture <span>with</span> Culture</span>
+  </a>
   <div class="nav-cluster">
     <a href="index.html" class="nav-back"><i data-lucide="arrow-left" class="nav-ic" aria-hidden="true"></i><span class="nav-back-label"> Main overview</span></a>
     <a href="#request-pilot" class="nav-cta" aria-label="Request information"><i data-lucide="mail" class="nav-cta-ic" aria-hidden="true"></i><span class="nav-cta-full">Request information</span><span class="nav-cta-short">Request info</span><span class="nav-cta-tiny">Contact</span></a>
@@ -760,6 +1169,217 @@
     <div class="hero-photo">
       <img src="https://images.unsplash.com/photo-1719159381916-062fa9f435a6?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" width="1200" height="750" alt="Students in an Indian school classroom" decoding="async" loading="lazy">
     </div>
+  </div>
+</section>
+
+<section class="hero" id="free-guide">
+  <div>
+    <div class="hero-badge"><i data-lucide="book-open" class="hero-badge-ic" aria-hidden="true"></i> Free guide · For school leaders</div>
+    <h2 class="fg-main-title">Your Students Deserve <em>More Than Marks</em></h2>
+    <p class="hero-lead">
+      Discover how leading schools are building confident, value-driven students through a simple weekly program — and why cultural awareness has become a quiet crisis in classrooms.
+    </p>
+    <div class="hero-meta">
+      <span><strong>Format:</strong> PDF · 8–10 pages</span>
+      <span><strong>Reading time:</strong> about 5–7 minutes</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#fg-problems" class="btn-ghost">Read what’s inside <i data-lucide="arrow-down" class="btn-ghost-ic" aria-hidden="true"></i></a>
+      <a href="#request-pilot" class="btn-primary"><i data-lucide="mail" class="btn-ic" aria-hidden="true"></i> Request the guide</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <ul class="hero-card-titles" aria-label="What the guide covers">
+      <li>Why 78% of Students Lack Cultural Awareness — and What Top Schools Are Doing About It</li>
+      <li>Beyond Marks: The Missing Curriculum That Builds Responsible Students</li>
+      <li>Your Students Know Instagram Trends… But Not Indian Icons — Here’s the Fix</li>
+      <li>The Silent Crisis in Schools: Declining Values, Reading &amp; Confidence</li>
+      <li>How Progressive Schools Are Building Confident, Value-Driven Students in Just 30 Minutes a Week</li>
+    </ul>
+    <p class="hero-card-meta">Included when you request the guide via the form below.</p>
+  </div>
+</section>
+
+<section class="band-dark fg-band" id="fg-problems">
+  <div class="reveal">
+    <div class="section-label">Problems we are facing</div>
+    <h2 class="section-title">We asked 100 students about Indian leaders — most couldn’t answer.</h2>
+    <p class="section-body">
+      In classrooms and assemblies, culture is often left to chance. This short guide summarises what that looks like in practice — and what changes when schools treat enrichment as seriously as scores.
+    </p>
+    <ul class="insight-list" style="margin-top:1.5rem;max-width:640px">
+      <li>Many students lack awareness of cultural icons and national stories beyond textbook bullet points.</li>
+      <li>Reading for depth is losing to scrolling — curiosity is there, but habits are not.</li>
+      <li>Confidence often shows up only in exams, not in expression, leadership, or real-world judgment.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="reveal">
+    <div class="section-label">The hidden problem</div>
+    <h2 class="section-title">Academic Excellence ≠ Holistic Development</h2>
+    <p class="section-body">Marks can rise while civic muscle, cultural literacy, and communication stay flat. That mismatch is now visible to parents, boards, and policy alike.</p>
+    <ul class="bullet-grid" style="list-style:none;margin-top:2rem">
+      <li>Over-focus on marks and rankings</li>
+      <li>No structured, year-long value-based learning thread</li>
+      <li>Screen habits replacing deep reading and curiosity</li>
+    </ul>
+    <p class="pull-quote" style="margin-top:2rem;max-width:640px">
+      “Schools are producing achievers, but not always responsible citizens.”
+    </p>
+  </div>
+</section>
+
+<section class="cream" id="fg-five-gaps">
+  <div class="reveal">
+    <div class="section-label">Five gaps</div>
+    <h2 class="section-title">The 5 Gaps Every School Is Facing</h2>
+    <p class="section-body">These map to the same areas our weekly sessions strengthen — so the diagnosis lines up with a practical response.</p>
+  </div>
+  <div class="gaps-visual reveal" aria-label="Five school gaps">
+    <div class="gap-cell">
+      <div class="gap-num">1</div>
+      <div class="gap-ic" aria-hidden="true"><i data-lucide="globe"></i></div>
+      <div class="gap-name">Cultural disconnect</div>
+    </div>
+    <div class="gap-cell">
+      <div class="gap-num">2</div>
+      <div class="gap-ic" aria-hidden="true"><i data-lucide="book-open"></i></div>
+      <div class="gap-name">Weak reading habits</div>
+    </div>
+    <div class="gap-cell">
+      <div class="gap-num">3</div>
+      <div class="gap-ic" aria-hidden="true"><i data-lucide="eye"></i></div>
+      <div class="gap-name">Low real-world awareness</div>
+    </div>
+    <div class="gap-cell">
+      <div class="gap-num">4</div>
+      <div class="gap-ic" aria-hidden="true"><i data-lucide="mic-2"></i></div>
+      <div class="gap-name">Low confidence in expression</div>
+    </div>
+    <div class="gap-cell">
+      <div class="gap-num">5</div>
+      <div class="gap-ic" aria-hidden="true"><i data-lucide="flag"></i></div>
+      <div class="gap-name">Missing leadership exposure</div>
+    </div>
+  </div>
+</section>
+
+<section class="band-dark fg-band" id="fg-top-schools">
+  <div class="reveal">
+    <div class="section-label">What top schools do</div>
+    <h2 class="section-title">The Rise of Enrichment-Driven Schools</h2>
+    <p class="section-body">Progressive schools are not adding “more periods.” They are adding a coherent enrichment layer parents can feel and inspectors can trace.</p>
+  </div>
+  <div class="card-row reveal">
+    <div class="mini-card">
+      <div class="mc-ic" aria-hidden="true"><i data-lucide="book-marked"></i></div>
+      <h3>Storytelling &amp; culture modules</h3>
+      <p>Narrative, discussion, and structured reflection — not one-off assemblies.</p>
+    </div>
+    <div class="mini-card">
+      <div class="mc-ic" aria-hidden="true"><i data-lucide="users"></i></div>
+      <h3>Leadership activities</h3>
+      <p>Speaking, roles, and responsibility in age-appropriate formats.</p>
+    </div>
+    <div class="mini-card">
+      <div class="mc-ic" aria-hidden="true"><i data-lucide="landmark"></i></div>
+      <h3>Cultural learning tracks</h3>
+      <p>Heritage, icons, and civic stories tied to student life.</p>
+    </div>
+  </div>
+  <ul class="insight-list reveal" style="margin-top:2rem;max-width:640px">
+    <li><strong style="color:#fff">Why now:</strong> parent demand for values and confidence, brand differentiation, and alignment with NEP-style holistic goals.</li>
+  </ul>
+</section>
+
+<section id="fg-outcomes">
+  <div class="reveal">
+    <div class="section-label">Outcomes</div>
+    <h2 class="section-title">The Impact Schools Are Seeing</h2>
+    <p class="section-body">Schools report stronger participation, clearer speaking confidence, renewed reading momentum, and happier parents — outcomes you can sense in a year, not only on a report card.</p>
+    <div class="outcomes">
+      <div class="outcome"><span>↑</span> Student participation</div>
+      <div class="outcome"><span>↑</span> Confidence in speaking</div>
+      <div class="outcome"><span>↑</span> Reading engagement</div>
+      <div class="outcome"><span>↑</span> Parent satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<section class="cream" id="fg-six-pillars">
+  <div class="reveal">
+    <div class="section-label">Your framework</div>
+    <h2 class="section-title">The 6-Pillar Development Model</h2>
+    <p class="section-body">The same six pillars that structure Nurture with Culture — a single lens for culture, literacy, character, and leadership.</p>
+  </div>
+  <div class="pillars-visual reveal" role="list">
+    <div class="pillar-tile" role="listitem"><span class="pt-ic" aria-hidden="true"><i data-lucide="landmark"></i></span><span>Culture</span></div>
+    <div class="pillar-tile" role="listitem"><span class="pt-ic" aria-hidden="true"><i data-lucide="book-open"></i></span><span>Reading</span></div>
+    <div class="pillar-tile" role="listitem"><span class="pt-ic" aria-hidden="true"><i data-lucide="compass"></i></span><span>Knowledge</span></div>
+    <div class="pillar-tile" role="listitem"><span class="pt-ic" aria-hidden="true"><i data-lucide="shield"></i></span><span>Character</span></div>
+    <div class="pillar-tile" role="listitem"><span class="pt-ic" aria-hidden="true"><i data-lucide="sparkles"></i></span><span>Confidence</span></div>
+    <div class="pillar-tile" role="listitem"><span class="pt-ic" aria-hidden="true"><i data-lucide="handshake"></i></span><span>Leadership</span></div>
+  </div>
+</section>
+
+<section id="fg-timetable">
+  <div class="reveal">
+    <div class="section-label">Your timetable</div>
+    <h2 class="section-title">“We Don’t Have Time in the Curriculum”</h2>
+    <p class="section-body">The guide answers with a constraint every principal understands: minutes per week, not new buildings or extra staff.</p>
+    <div class="objection-box">
+      <h3>What if it only took 30 minutes a week?</h3>
+      <p class="objection-answer">Weekly sessions · 40 sessions per year · plug-and-play for schools</p>
+      <p class="section-body" style="max-width:none;font-size:0.95rem">
+        Short, facilitator-led blocks that fit the timetable — so holistic development is scheduled, not squeezed in after exams.
+      </p>
+      <div class="format-chips">
+        <span class="chip">Weekly rhythm</span>
+        <span class="chip">40 sessions / year</span>
+        <span class="chip">School-ready format</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="fg-cta">
+  <div class="reveal">
+    <div class="section-label">Next steps</div>
+    <h2>See How This Can Work in Your School</h2>
+    <p class="lead">Explore a short demo with your students, request sample session materials, or plan a pilot for one class — whatever fits your board conversation.</p>
+  </div>
+  <div class="cta-options reveal">
+    <div class="cta-card">
+      <p>Free 30-minute demo session for your students</p>
+      <a href="mailto:hello@nurturewithculture.in?subject=Request%3A%2030-minute%20demo%20session%20for%20students">Request a demo <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="cta-card">
+      <p>Sample session plan</p>
+      <a href="mailto:hello@nurturewithculture.in?subject=Request%3A%20Sample%20session%20plan">Request materials <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="cta-card">
+      <p>Pilot for one class (no commitment)</p>
+      <a href="#request-pilot">Use the form below <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <p style="margin-top:2.5rem;font-size:0.9rem;color:rgba(255,255,255,0.5)">
+    Prefer email? <a href="mailto:hello@nurturewithculture.in" style="color:var(--gold)">hello@nurturewithculture.in</a>
+  </p>
+</section>
+
+<section class="cream" id="fg-pressures" style="padding-bottom:72px">
+  <div class="reveal">
+    <div class="section-label">Why it matters</div>
+    <h2 class="section-title">Built for Three Pressures at Once</h2>
+    <p class="section-body" style="max-width:720px">
+      <strong style="color:var(--deep-navy)">Principal:</strong> “Are we falling behind peer schools on holistic outcomes?”
+      <br><br>
+      <strong style="color:var(--deep-navy)">Parents:</strong> “Are we building values and confidence — not only marks?”
+      <br><br>
+      <strong style="color:var(--deep-navy)">Operations:</strong> “Can we implement this without breaking the timetable?”
+    </p>
   </div>
 </section>
 
@@ -959,7 +1579,7 @@
   <div class="lead-wrap reveal">
     <div class="section-label">Next step</div>
     <h2 class="section-title">Tell us about your school</h2>
-    <p class="section-body">Share your details and we will respond with program materials and available slots for a leadership briefing (video or on-campus where feasible).</p>
+    <p class="section-body">Share your details and we will send the free insight guide (PDF), program materials, and available slots for a leadership briefing (video or on-campus where feasible).</p>
     <form class="lead-form" id="school-lead-form" action="#" method="post" novalidate>
       <div class="form-row two">
         <div>
@@ -1023,6 +1643,10 @@
 <footer>
   <p><strong>Nurture with Culture</strong> — School enrichment rooted in Indian values</p>
   <p style="margin-top:10px"><a href="index.html">Full program overview</a> · <a href="mailto:hello@nurturewithculture.in">hello@nurturewithculture.in</a></p>
+  <div class="demo-disclaimer" role="note" aria-label="Disclaimer">
+    <span class="demo-disclaimer-ic" aria-hidden="true"><i data-lucide="triangle-alert"></i></span>
+    <p class="demo-disclaimer-text">Built by Group 10 as a demo project for the AI Foundation training program at IIT Bombay.</p>
+  </div>
   <p style="margin-top:8px">© 2026 Nurture with Culture. All rights reserved.</p>
 </footer>
 
